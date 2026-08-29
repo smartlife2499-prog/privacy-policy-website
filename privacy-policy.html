@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Python Quizy</title>
+<meta name="description" content="Privacy Policy for the Python Quizy app.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16232e;
+    --ink-soft:#3d4f5c;
+    --paper:#f5f7f7;
+    --paper-raised:#ffffff;
+    --line:#dfe6e6;
+    --py-blue:#2f7ea3;
+    --py-blue-deep:#1c5878;
+    --py-yellow:#f2b705;
+    --good:#1f7a4d;
+    --good-bg:#e7f5ec;
+    --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.65;
+    font-size:16px;
+  }
+
+  a{color:var(--py-blue-deep);}
+  a:hover{color:var(--py-blue);}
+  a:focus-visible, button:focus-visible, summary:focus-visible{
+    outline:3px solid var(--py-yellow);
+    outline-offset:2px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  /* ---------- Header / hero ---------- */
+  header.hero{
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(242,183,5,0.16), transparent 60%),
+      linear-gradient(180deg, var(--ink) 0%, #1c2c38 100%);
+    color:#eef3f4;
+    padding: clamp(28px, 6vw, 56px) 20px clamp(40px, 8vw, 72px);
+  }
+  .hero-inner{
+    max-width:920px;
+    margin:0 auto;
+  }
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.04em;
+    color:#bcd7e2;
+    background:rgba(47,126,163,0.18);
+    border:1px solid rgba(47,126,163,0.45);
+    padding:5px 10px;
+    border-radius:999px;
+    margin-bottom:18px;
+  }
+  .badge .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--py-yellow);
+    box-shadow:0 0 0 3px rgba(242,183,5,0.2);
+  }
+  h1.title{
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:clamp(28px, 5.2vw, 44px);
+    line-height:1.15;
+    margin:0 0 12px;
+    letter-spacing:-0.01em;
+  }
+  .hero p.lede{
+    max-width:60ch;
+    color:#c6d3d8;
+    font-size:clamp(15px, 2.4vw, 17.5px);
+    margin:0 0 28px;
+  }
+  .meta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 22px;
+    font-size:13.5px;
+    color:#9db2bb;
+    font-family:var(--mono);
+  }
+  .meta-row strong{color:#e8eef0; font-weight:600;}
+
+  /* Terminal-style summary card — the signature element */
+  .terminal{
+    margin-top:32px;
+    background:#0f1a22;
+    border:1px solid #26414f;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 24px 60px -30px rgba(0,0,0,0.7);
+  }
+  .term-bar{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:11px 14px;
+    background:#13232c;
+    border-bottom:1px solid #26414f;
+  }
+  .term-dot{width:10px;height:10px;border-radius:50%;}
+  .term-dot.r{background:#e5645a;}
+  .term-dot.y{background:#e6b450;}
+  .term-dot.g{background:#4fbf67;}
+  .term-label{
+    margin-left:8px;
+    font-family:var(--mono);
+    font-size:12px;
+    color:#7d99a5;
+  }
+  .term-body{
+    padding:18px 20px 22px;
+    font-family:var(--mono);
+    font-size:13.5px;
+    overflow-x:auto;
+  }
+  .term-body .line{white-space:pre; margin:0 0 6px;}
+  .term-prompt{color:#4fbf9f;}
+  .term-key{color:#7fb8d6;}
+  .term-val-true{color:#e6b450;}
+  .term-val-false{color:#4fbf67;}
+  .term-comment{color:#5c7480;}
+
+  /* ---------- Layout ---------- */
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+  .layout{
+    display:grid;
+    grid-template-columns: 220px 1fr;
+    gap:48px;
+    padding:44px 0 90px;
+    align-items:start;
+  }
+  @media (max-width: 800px){
+    .layout{grid-template-columns: 1fr; gap:0; padding-top:28px;}
+  }
+
+  /* Table of contents (sticky on desktop, collapsible on mobile) */
+  nav.toc{
+    position:sticky;
+    top:20px;
+  }
+  nav.toc .toc-title{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:#7d8f97;
+    margin-bottom:12px;
+  }
+  nav.toc ol{
+    list-style:none;
+    margin:0; padding:0;
+    border-left:2px solid var(--line);
+  }
+  nav.toc li{margin:0;}
+  nav.toc a{
+    display:block;
+    padding:7px 0 7px 14px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    border-left:2px solid transparent;
+    margin-left:-2px;
+  }
+  nav.toc a:hover{color:var(--py-blue-deep); border-left-color:var(--py-blue);}
+
+  @media (max-width: 800px){
+    nav.toc{position:static; margin-bottom:8px;}
+    details.toc-mobile{
+      background:var(--paper-raised);
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:4px 16px;
+    }
+    details.toc-mobile summary{
+      cursor:pointer;
+      padding:12px 0;
+      font-family:var(--mono);
+      font-size:13px;
+      letter-spacing:0.04em;
+      text-transform:uppercase;
+      color:var(--py-blue-deep);
+      font-weight:600;
+    }
+    nav.toc ol{border-left:none; padding-bottom:8px;}
+    nav.toc a{padding-left:10px; border-left:2px solid var(--line);}
+  }
+
+  /* ---------- Article ---------- */
+  main article{min-width:0;}
+
+  .callout{
+    background:var(--good-bg);
+    border:1px solid #bfe3cc;
+    border-left:4px solid var(--good);
+    border-radius:10px;
+    padding:16px 18px;
+    margin:0 0 40px;
+    font-size:15px;
+  }
+  .callout strong{color:var(--good);}
+
+  section{
+    padding-top:8px;
+    margin-bottom:40px;
+    scroll-margin-top:20px;
+  }
+  section h2{
+    font-family:var(--mono);
+    font-size:clamp(19px, 3vw, 22px);
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin:0 0 14px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--line);
+  }
+  section h2 .num{
+    color:var(--py-blue);
+    font-weight:700;
+  }
+  section h3{
+    font-family:var(--mono);
+    font-size:15px;
+    color:var(--ink);
+    margin:22px 0 8px;
+  }
+  section p{margin:0 0 14px; color:var(--ink-soft);}
+  section ul{margin:0 0 14px; padding-left:22px; color:var(--ink-soft);}
+  section li{margin-bottom:6px;}
+  section li::marker{color:var(--py-blue);}
+  code, .inline-code{
+    font-family:var(--mono);
+    font-size:0.9em;
+    background:#eef2f2;
+    border:1px solid var(--line);
+    padding:1px 6px;
+    border-radius:5px;
+    color:var(--py-blue-deep);
+  }
+
+  table.data-table{
+    width:100%;
+    border-collapse:collapse;
+    margin:12px 0 20px;
+    font-size:14px;
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+  }
+  table.data-table th, table.data-table td{
+    text-align:left;
+    padding:11px 14px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  table.data-table th{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:#7d8f97;
+    background:#eef2f2;
+  }
+  table.data-table tr:last-child td{border-bottom:none;}
+
+  .xmark, .check{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:var(--mono);
+    font-size:13px;
+    font-weight:600;
+  }
+  .xmark{color:#c0392b;}
+  .check{color:var(--good);}
+
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(210px,1fr));
+    gap:14px;
+    margin:14px 0 20px;
+  }
+  .card{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px;
+  }
+  .card .icon{
+    font-family:var(--mono);
+    font-size:12px;
+    color:#7d8f97;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    margin-bottom:8px;
+  }
+  .card p{margin:0; font-size:14px; color:var(--ink-soft);}
+
+  .placeholder{
+    background:#fff6df;
+    border:1px dashed #dcb245;
+    color:#7a5b09;
+    padding:2px 8px;
+    border-radius:6px;
+    font-family:var(--mono);
+    font-size:0.92em;
+  }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:26px 20px 40px;
+    text-align:center;
+    color:#7d8f97;
+    font-size:13px;
+  }
+  footer .wrap{padding:0;}
+
+  ::selection{background:rgba(47,126,163,0.25);}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="badge"><span class="dot"></span>PRIVACY POLICY</span>
+    <h1 class="title">Python Quizy — Privacy Policy</h1>
+    <p class="lede">
+      Python Quizy is a self-contained quiz app for practicing Python. This page explains,
+      in plain language, what the app does and does not do with your information.
+    </p>
+    <div class="meta-row">
+      <span><strong>Effective date:</strong> August 29, 2026</span>
+      <span><strong>Last updated:</strong> August 29, 2026</span>
+      <span><strong>Applies to:</strong> Python Quizy (Android, iOS, and desktop builds)</span>
+    </div>
+
+    <div class="terminal">
+      <div class="term-bar">
+        <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+        <span class="term-label">python3 — privacy_summary.py</span>
+      </div>
+      <div class="term-body">
+        <p class="line"><span class="term-prompt">&gt;&gt;&gt;</span> <span class="term-key">personal_data_collected</span></p>
+        <p class="line">[]  <span class="term-comment"># nothing is collected, ever</span></p>
+        <p class="line"><span class="term-prompt">&gt;&gt;&gt;</span> <span class="term-key">data_leaves_this_device</span></p>
+        <p class="line"><span class="term-val-false">False</span></p>
+        <p class="line"><span class="term-prompt">&gt;&gt;&gt;</span> <span class="term-key">accounts_or_sign_in_required</span></p>
+        <p class="line"><span class="term-val-false">False</span></p>
+        <p class="line"><span class="term-prompt">&gt;&gt;&gt;</span> <span class="term-key">ads_or_analytics_sdks</span></p>
+        <p class="line"><span class="term-val-false">False</span></p>
+        <p class="line"><span class="term-prompt">&gt;&gt;&gt;</span> <span class="term-key">quiz_progress_storage</span></p>
+        <p class="line">'local SQLite database, on-device only'</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="layout">
+
+    <!-- Desktop sticky TOC -->
+    <nav class="toc" aria-label="Table of contents">
+      <div class="toc-title">On this page</div>
+      <ol>
+        <li><a href="#overview">1. Overview</a></li>
+        <li><a href="#what-we-store">2. What the app stores</a></li>
+        <li><a href="#what-we-dont-do">3. What we don't do</a></li>
+        <li><a href="#where-stored">4. Where your data lives</a></li>
+        <li><a href="#permissions">5. Device permissions</a></li>
+        <li><a href="#your-choices">6. Your choices &amp; deleting data</a></li>
+        <li><a href="#children">7. Children's privacy</a></li>
+        <li><a href="#changes">8. Changes to this policy</a></li>
+        <li><a href="#contact">9. Contact us</a></li>
+      </ol>
+    </nav>
+
+    <!-- Mobile collapsible TOC -->
+    <details class="toc-mobile" style="display:none;">
+      <summary>On this page</summary>
+      <nav class="toc" aria-label="Table of contents (mobile)">
+        <ol>
+          <li><a href="#overview">1. Overview</a></li>
+          <li><a href="#what-we-store">2. What the app stores</a></li>
+          <li><a href="#what-we-dont-do">3. What we don't do</a></li>
+          <li><a href="#where-stored">4. Where your data lives</a></li>
+          <li><a href="#permissions">5. Device permissions</a></li>
+          <li><a href="#your-choices">6. Your choices &amp; deleting data</a></li>
+          <li><a href="#children">7. Children's privacy</a></li>
+          <li><a href="#changes">8. Changes to this policy</a></li>
+          <li><a href="#contact">9. Contact us</a></li>
+        </ol>
+      </nav>
+    </details>
+
+    <main>
+      <article>
+
+        <div class="callout">
+          <strong>Short version:</strong> Python Quizy does not collect, transmit, or share any
+          personal information. Your quiz progress is saved only in a small database stored on
+          your own device. There are no accounts, no ads, no analytics, and no third-party
+          data sharing of any kind.
+        </div>
+
+        <section id="overview">
+          <h2><span class="num">1.</span> Overview</h2>
+          <p>
+            Python Quizy ("the app," "we," "our") is an offline quiz app that helps people
+            practice Python programming concepts. This Privacy Policy describes what
+            information the app handles and how, so you can use it with confidence.
+          </p>
+          <p>
+            Because the app works entirely on your device and never connects to a server we
+            operate, most of the categories that a typical privacy policy has to cover —
+            account data, cookies, cross-app tracking, ad identifiers — simply don't apply here.
+            The sections below spell out exactly what does happen.
+          </p>
+        </section>
+
+        <section id="what-we-store">
+          <h2><span class="num">2.</span> What the app stores</h2>
+          <p>
+            The app keeps a small local database file (<code>pyquizy_progress.db</code>) so your
+            progress is still there the next time you open the app. This database contains only
+            the following:
+          </p>
+          <table class="data-table">
+            <thead>
+              <tr><th>Data</th><th>Purpose</th><th>Leaves your device?</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Which quiz questions you've checked off as "done," by topic</td>
+                <td>Shows your progress bar and lets you pick up where you left off</td>
+                <td><span class="xmark">✕ No</span></td>
+              </tr>
+              <tr>
+                <td>A single flag noting whether you've seen the app's onboarding screens</td>
+                <td>Avoids showing the welcome screens more than once</td>
+                <td><span class="xmark">✕ No</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            That's the complete list. The app does not ask for your name, email address,
+            location, photos, contacts, or any other personal information, because it doesn't
+            need any of that to work.
+          </p>
+        </section>
+
+        <section id="what-we-dont-do">
+          <h2><span class="num">3.</span> What we don't do</h2>
+          <div class="card-grid">
+            <div class="card">
+              <div class="icon">✕ Accounts</div>
+              <p>No sign-up, no login, no user profiles. You can start quizzing immediately.</p>
+            </div>
+            <div class="card">
+              <div class="icon">✕ Network access</div>
+              <p>The app doesn't make network requests to us or anyone else. Everything runs locally.</p>
+            </div>
+            <div class="card">
+              <div class="icon">✕ Analytics / tracking</div>
+              <p>No analytics SDKs, crash reporters, or behavioral tracking are included in the app.</p>
+            </div>
+            <div class="card">
+              <div class="icon">✕ Advertising</div>
+              <p>No ads, no ad networks, no advertising identifiers are collected or used.</p>
+            </div>
+            <div class="card">
+              <div class="icon">✕ Third-party sharing</div>
+              <p>Since nothing is collected, there is nothing to sell, share, or hand over to third parties.</p>
+            </div>
+            <div class="card">
+              <div class="icon">✕ Cloud sync</div>
+              <p>Progress is not backed up to any cloud service by the app itself.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="where-stored">
+          <h2><span class="num">4.</span> Where your data lives</h2>
+          <p>
+            All app data is stored in a private, sandboxed folder that the operating system
+            allocates to Python Quizy on your device:
+          </p>
+          <ul>
+            <li><strong>Mobile (Android/iOS):</strong> the app's private, app-scoped storage area, which other apps cannot read.</li>
+            <li><strong>Desktop:</strong> a folder alongside the app on your computer.</li>
+          </ul>
+          <p>
+            This data never travels anywhere else. We — the developer — cannot see it, because
+            it's never transmitted to us. If you use your device's built-in backup feature
+            (such as an OS-level phone backup), your progress database may be included in that
+            backup the same way any other app's local files would be; that backup is controlled
+            by your device's operating system and account settings, not by Python Quizy.
+          </p>
+        </section>
+
+        <section id="permissions">
+          <h2><span class="num">5.</span> Device permissions</h2>
+          <p>
+            Python Quizy does not request access to your camera, microphone, contacts, location,
+            photos, or any other sensitive device permission. The only storage it uses is its own
+            private app folder, which is set up automatically by the operating system and requires
+            no permission prompt.
+          </p>
+        </section>
+
+        <section id="your-choices">
+          <h2><span class="num">6.</span> Your choices &amp; deleting your data</h2>
+          <p>
+            Because everything is stored locally, you're always in full control of it:
+          </p>
+          <ul>
+            <li><strong>Clear app data:</strong> use your device's Settings → Apps → Python Quizy → "Clear data" (or the equivalent on your platform) to erase all saved progress instantly.</li>
+            <li><strong>Uninstall the app:</strong> removing the app deletes its private storage folder, including the progress database, along with it.</li>
+            <li><strong>No deletion requests needed:</strong> since we never receive or hold a copy of your data, there's no "request my data be deleted" step to go through with us — clearing it on your device is the whole process.</li>
+          </ul>
+        </section>
+
+        <section id="children">
+          <h2><span class="num">7.</span> Children's privacy</h2>
+          <p>
+            Python Quizy does not collect personal information from anyone, including children
+            under 13 (or the relevant minimum age in your region). Because the app has no
+            accounts, no data collection, and no network activity, it does not knowingly collect
+            or process personal information from children in a way that would require parental
+            consent under laws such as COPPA.
+          </p>
+        </section>
+
+        <section id="changes">
+          <h2><span class="num">8.</span> Changes to this policy</h2>
+          <p>
+            If this Privacy Policy ever changes — for example, if a future version of the app
+            adds a feature that does handle data differently — we will update this page and
+            revise the "Last updated" date at the top. We encourage you to check back
+            occasionally if you'd like to stay informed.
+          </p>
+        </section>
+
+        <section id="contact">
+          <h2><span class="num">9.</span> Contact us</h2>
+          <p>
+            If you have any questions about this Privacy Policy or how Python Quizy handles
+            data, reach out at:
+          </p>
+          <p>
+            📧 <a href="mailto:isaacgathogo56@gmail.com">isaacgathogo56@gmail.com</a>
+          </p>
+        </section>
+
+      </article>
+    </main>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    © 2026 Python Quizy. This policy is written to be clear and specific to what the app
+    actually does — it is not a substitute for legal advice.
+  </div>
+</footer>
+
+<script>
+  // Show the mobile collapsible TOC only below the 800px breakpoint,
+  // and hide the sticky desktop TOC in that case (pure progressive
+  // enhancement — both versions are static HTML/CSS without this).
+  function syncTocForViewport() {
+    var mobileToc = document.querySelector('details.toc-mobile');
+    var desktopToc = document.querySelector('nav.toc');
+    if (window.innerWidth <= 800) {
+      mobileToc.style.display = 'block';
+    } else {
+      mobileToc.style.display = 'none';
+    }
+  }
+  syncTocForViewport();
+  window.addEventListener('resize', syncTocForViewport);
+</script>
+
+</body>
+</html>
