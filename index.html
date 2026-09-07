@@ -369,12 +369,14 @@
       <div class="term-body">
         <p class="line"><span class="term-prompt">&gt;&gt;&gt;</span> <span class="term-key">personal_data_collected</span></p>
         <p class="line">[]  <span class="term-comment"># nothing is collected, ever</span></p>
-        <p class="line"><span class="term-prompt">&gt;&gt;&gt;</span> <span class="term-key">data_leaves_this_device</span></p>
+        <p class="line"><span class="term-prompt">&gt;&gt;&gt;</span> <span class="term-key">quiz_data_leaves_this_device</span></p>
         <p class="line"><span class="term-val-false">False</span></p>
         <p class="line"><span class="term-prompt">&gt;&gt;&gt;</span> <span class="term-key">accounts_or_sign_in_required</span></p>
         <p class="line"><span class="term-val-false">False</span></p>
         <p class="line"><span class="term-prompt">&gt;&gt;&gt;</span> <span class="term-key">ads_or_analytics_sdks</span></p>
         <p class="line"><span class="term-val-false">False</span></p>
+        <p class="line"><span class="term-prompt">&gt;&gt;&gt;</span> <span class="term-key">internet_permission_declared</span></p>
+        <p class="line"><span class="term-val-true">True</span>  <span class="term-comment"># used only to open this page from the in-app "Privacy Policy" button</span></p>
         <p class="line"><span class="term-prompt">&gt;&gt;&gt;</span> <span class="term-key">quiz_progress_storage</span></p>
         <p class="line">'local SQLite database, on-device only'</p>
       </div>
@@ -391,7 +393,7 @@
       <ol>
         <li><a href="#overview">1. Overview</a></li>
         <li><a href="#what-we-store">2. What the app stores</a></li>
-        <li><a href="#what-we-dont-do">3. What we don't do</a></li>
+        <li><a href="#network-use">3. Internet access &amp; what we don't do</a></li>
         <li><a href="#where-stored">4. Where your data lives</a></li>
         <li><a href="#permissions">5. Device permissions</a></li>
         <li><a href="#your-choices">6. Your choices &amp; deleting data</a></li>
@@ -408,7 +410,7 @@
         <ol>
           <li><a href="#overview">1. Overview</a></li>
           <li><a href="#what-we-store">2. What the app stores</a></li>
-          <li><a href="#what-we-dont-do">3. What we don't do</a></li>
+          <li><a href="#network-use">3. Internet access &amp; what we don't do</a></li>
           <li><a href="#where-stored">4. Where your data lives</a></li>
           <li><a href="#permissions">5. Device permissions</a></li>
           <li><a href="#your-choices">6. Your choices &amp; deleting data</a></li>
@@ -425,22 +427,26 @@
         <div class="callout">
           <strong>Short version:</strong> Python Quizy does not collect, transmit, or share any
           personal information. Your quiz progress is saved only in a small database stored on
-          your own device. There are no accounts, no ads, no analytics, and no third-party
-          data sharing of any kind.
+          your own device. There are no accounts, no ads, and no analytics. The app requests
+          internet access for one narrow purpose — opening this Privacy Policy page in a browser
+          or in-app viewer when you tap the "Privacy Policy" link in the app's settings — and for
+          nothing else.
         </div>
 
         <section id="overview">
           <h2><span class="num">1.</span> Overview</h2>
           <p>
-            Python Quizy ("the app," "we," "our") is an offline quiz app that helps people
+            Python Quizy ("the app," "we," "our") is an offline-first quiz app that helps people
             practice Python programming concepts. This Privacy Policy describes what
             information the app handles and how, so you can use it with confidence.
           </p>
           <p>
-            Because the app works entirely on your device and never connects to a server we
-            operate, most of the categories that a typical privacy policy has to cover —
-            account data, cookies, cross-app tracking, ad identifiers — simply don't apply here.
-            The sections below spell out exactly what does happen.
+            Almost everything in the app works entirely on your device and never connects to a
+            server we operate, so most of the categories that a typical privacy policy has to
+            cover — account data, cookies, cross-app tracking, ad identifiers — simply don't
+            apply here. The one exception is described in Section 3: the app can open this page
+            over the internet when you choose to view it. The sections below spell out exactly
+            what does and doesn't happen.
           </p>
         </section>
 
@@ -469,22 +475,30 @@
             </tbody>
           </table>
           <p>
-            That's the complete list. The app does not ask for your name, email address,
-            location, photos, contacts, or any other personal information, because it doesn't
-            need any of that to work.
+            That's the complete list of data the app stores. The app does not ask for your name,
+            email address, location, photos, contacts, or any other personal information,
+            because it doesn't need any of that to work.
           </p>
         </section>
 
-        <section id="what-we-dont-do">
-          <h2><span class="num">3.</span> What we don't do</h2>
+        <section id="network-use">
+          <h2><span class="num">3.</span> Internet access &amp; what we don't do</h2>
+          <p>
+            Python Quizy declares the device's internet permission for one specific, limited
+            purpose: when you tap the <strong>"Privacy Policy"</strong> link in the app's
+            settings screen, the app opens this page in your browser or an in-app web view. That
+            request only loads this static page — it does not send your quiz progress, device
+            identifiers, or any other app data along with it. Outside of that one action, the
+            app makes no network requests of its own.
+          </p>
           <div class="card-grid">
             <div class="card">
               <div class="icon">✕ Accounts</div>
               <p>No sign-up, no login, no user profiles. You can start quizzing immediately.</p>
             </div>
             <div class="card">
-              <div class="icon">✕ Network access</div>
-              <p>The app doesn't make network requests to us or anyone else. Everything runs locally.</p>
+              <div class="icon">✕ Data transmission</div>
+              <p>Quiz progress and app settings are never uploaded, synced, or sent to us or anyone else.</p>
             </div>
             <div class="card">
               <div class="icon">✕ Analytics / tracking</div>
@@ -516,21 +530,24 @@
             <li><strong>Desktop:</strong> a folder alongside the app on your computer.</li>
           </ul>
           <p>
-            This data never travels anywhere else. We — the developer — cannot see it, because
-            it's never transmitted to us. If you use your device's built-in backup feature
-            (such as an OS-level phone backup), your progress database may be included in that
-            backup the same way any other app's local files would be; that backup is controlled
-            by your device's operating system and account settings, not by Python Quizy.
+            This data never travels anywhere else — the app's internet permission (Section 3) is
+            used only to open this Privacy Policy page, not to move your progress data off your
+            device. We — the developer — cannot see your quiz data, because it's never
+            transmitted to us. If you use your device's built-in backup feature (such as an
+            OS-level phone backup), your progress database may be included in that backup the
+            same way any other app's local files would be; that backup is controlled by your
+            device's operating system and account settings, not by Python Quizy.
           </p>
         </section>
 
         <section id="permissions">
           <h2><span class="num">5.</span> Device permissions</h2>
           <p>
-            Python Quizy does not request access to your camera, microphone, contacts, location,
-            photos, or any other sensitive device permission. The only storage it uses is its own
-            private app folder, which is set up automatically by the operating system and requires
-            no permission prompt.
+            Python Quizy requests the device's internet permission solely so the in-app
+            "Privacy Policy" link can open this page. It does not request access to your camera,
+            microphone, contacts, location, photos, or any other sensitive device permission.
+            The only storage it uses is its own private app folder, which is set up automatically
+            by the operating system and requires no permission prompt.
           </p>
         </section>
 
@@ -551,9 +568,10 @@
           <p>
             Python Quizy does not collect personal information from anyone, including children
             under 13 (or the relevant minimum age in your region). Because the app has no
-            accounts, no data collection, and no network activity, it does not knowingly collect
-            or process personal information from children in a way that would require parental
-            consent under laws such as COPPA.
+            accounts and no data collection, and its only network activity is loading this
+            static Privacy Policy page on request, it does not knowingly collect or process
+            personal information from children in a way that would require parental consent
+            under laws such as COPPA.
           </p>
         </section>
 
